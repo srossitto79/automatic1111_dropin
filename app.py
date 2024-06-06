@@ -97,6 +97,8 @@ def txt2img():
     prompt = payload['prompt']
     steps = payload['steps'] if 'steps' in payload else 25
     model_name = payload['model_name'] if 'model_name' in payload else 'dreamshaper_8.safetensors'
+    
+    #{ "images": ["base_64_enc_image", "..."] }
     result = sd_img_pipeline(prompt, steps=steps, model_id=model_name)
     return jsonify(result)
 
@@ -109,7 +111,9 @@ def img2img():
     model_name = payload['model_name'] if 'model_name' in payload else 'dreamshaper_8.safetensors'
     image = PIL.Image.open(request.files['image'])
 
+    #{ "images": ["base_64_enc_image", "..."] }
     result = sd_img_pipeline(prompt, steps=steps, model_id=model_name, init_image=image)
+    
     return jsonify(result)
 
 #TODO add all endpoint methods supported by automatic111 api
