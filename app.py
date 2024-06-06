@@ -1,0 +1,1 @@
+#build a flask api that mimic automatic111 api for stable diffusion on 7860 port, use huggingface pipelines to accomplish the generation tasks, assure to load and unload the model for every generation queue freeing up the memory when finished
